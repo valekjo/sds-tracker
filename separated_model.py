@@ -123,7 +123,7 @@ def main(c):
     gru = GRUCell(c.hidden_state_dim)
 
     embeddings_we = tf.get_variable('word_embeddings',
-                                    initializer=tf.random_uniform([vocab_size, c.embedding_dim], -1.0, 1.0))
+                                    initializer=tf.random_uniform([vocab_size, c.embedding_dim], -1.0, 1.0), trainable=False)
     embedded_input_bte = tf.nn.embedding_lookup(embeddings_we, input_bt)
     dialog_state_before_turn = tf.get_variable('dialog_state_before_turn',
                                                initializer=tf.zeros([c.batch_size, c.hidden_state_dim], dtype='float32'),
